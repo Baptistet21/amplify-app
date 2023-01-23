@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect, useState} from "react";
+import {Amplify} from "aws-amplify";
+import awsmobile from "./aws-exports";
+import ProfileToolbar from "./Composant/ProfileToolbar";
+import {withAuthenticator} from "@aws-amplify/ui-react";
+import {Auth} from "aws-amplify";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+Amplify.configure(awsmobile)
+const App = () => {
+    const [currentUser,setCurrentUser] = useState(undefined)
+
+    useEffect(() =>{
+      async function getAuthUser() {
+          setCurrentUser(await Auth.currentAuthenticatedUser())
+      }
+      getAuthUser()
+    }, [])
+
+    return <div>
+        {currentUser && <ProfileToolbar currentUser={currentUser}/>}
     </div>
-  );
 }
-
-export default App;
+export default withAuthenticator(App);
