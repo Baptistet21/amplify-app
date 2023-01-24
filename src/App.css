@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.Item {
+  text-align: center;
+  margin-left: 38% ;
+  margin-top: 1%;
+  width: 45%;
+  border: 2px solid blue;
+}
+
+.Add-Item {
+  text-align: center;
+  margin-left: 25% ;
+  margin-top: 3%;
+  width: 50%;
+  border: 5px solid red;
+}

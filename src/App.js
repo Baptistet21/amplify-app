@@ -5,6 +5,9 @@ import awsmobile from "./aws-exports";
 import ProfileToolbar from "./Composant/ProfileToolbar";
 import {withAuthenticator} from "@aws-amplify/ui-react";
 import {Auth} from "aws-amplify";
+import AddItem from "./Composant/AddItem";
+import {Item} from "./models";
+import Items from "./Composant/Items";
 
 Amplify.configure(awsmobile)
 const App = () => {
@@ -16,9 +19,14 @@ const App = () => {
       }
       getAuthUser()
     }, [])
-
+/*
     return <div>
         {currentUser && <ProfileToolbar currentUser={currentUser}/>}
-    </div>
+    </div>*/
+    return currentUser ? <div>
+        <ProfileToolbar currentUser={currentUser}/>
+        <AddItem currentUser={currentUser}/>
+        <Items/>
+    </div> : null
 }
 export default withAuthenticator(App);
