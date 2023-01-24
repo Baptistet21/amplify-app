@@ -5,7 +5,7 @@ import {Typography} from "@material-ui/core";
 import "../App.css";
 import {DataStore} from "@aws-amplify/datastore";
 import {Item} from "../models";
-import {S3Image} from "aws-amplify-react";
+import {AmplifyS3Image} from "@aws-amplify/ui-react";
 
 
 const Items = () => {
@@ -31,7 +31,7 @@ const Items = () => {
                     <Typography variant="h6">{item.title}</Typography>
                     <Typography style={{float:"right"}}>Prix : {item.price}€</Typography>
                     <Typography>{item.description}</Typography>
-                    {item.picture && <S3Image path={item.picture}/>}
+                    {item.picture && <AmplifyS3Image path={item.picture}/>}
                     <Typography style={{textAlign:"right"}}>Publié par {item.userEmail}</Typography>
 
                 </CardContent>

@@ -31,6 +31,7 @@ const AddItem = ({currentUser}) => {
         </CardContent>
         <CardActions>
             <Button color="primary" onClick={async () => {
+                /* sauvegarde sur S3 le fichier */
                 if(file){
                     await Storage.put(file.name,file);}
                 await DataStore.save(new Item({
