@@ -5,6 +5,7 @@ import {Typography} from "@material-ui/core";
 import "../App.css";
 import {DataStore} from "@aws-amplify/datastore";
 import {Item} from "../models";
+import {S3Image} from "aws-amplify-react";
 
 
 const Items = () => {
@@ -19,6 +20,8 @@ const Items = () => {
         const subscription = DataStore.observe(Item).subscribe(()=>getItems())
         return ()=> subscription.unsubscribe();
     })
+
+
     return <div>
         {items.length === 0 &&
             <Typography style={{textAlign:"center"}} variant="h6">Aucune annonce</Typography>}
@@ -26,9 +29,10 @@ const Items = () => {
             <Card key={item.id} className="Item">
                 <CardContent>
                     <Typography variant="h6">{item.title}</Typography>
-                    <Typography style={{float:"right"}}>Prix : {item.title}</Typography>
+                    <Typography style={{float:"right"}}>Prix : {item.price}€</Typography>
                     <Typography>{item.description}</Typography>
-                    <Typography style={{textAlign:"right"}}>Publié par {item.userEmail} le {item.createdAt}</Typography>
+                    {item.picture && <S3Image path={item.picture}/>}
+                    <Typography style={{textAlign:"right"}}>Publié par {item.userEmail}</Typography>
 
                 </CardContent>
             </Card>)}

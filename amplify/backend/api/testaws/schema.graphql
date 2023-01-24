@@ -1,0 +1,10 @@
+
+type Item @model{
+    id:ID!
+    userEmail:String!
+    title:String!
+    description:String!
+    price:Float!
+    createdAt:String
+    picture: String
+}
