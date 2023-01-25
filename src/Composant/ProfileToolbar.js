@@ -5,11 +5,10 @@ import Avatar from "@material-ui/core/Avatar";
 import {AmplifySignOut} from "@aws-amplify/ui-react";
 
 const ProfileToolbar = ({currentUser}) =>
-    <AppBar position="static">
+    <AppBar position="fixed">
         <Toolbar>
             <Avatar/>
             <div>Bonjour <b>{currentUser.attributes.email}</b></div>
-            <signOut/>
         </Toolbar>
         <AmplifySignOut/>
     </AppBar>

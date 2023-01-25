@@ -25,8 +25,10 @@ const App = () => {
     </div>*/
     return currentUser ? <div>
         <ProfileToolbar currentUser={currentUser}/>
+        <br/><br/><br/><br/><br/><br/>
         <AddItem currentUser={currentUser}/>
         <Items/>
+
     </div> : null
 }
 export default withAuthenticator(App);
